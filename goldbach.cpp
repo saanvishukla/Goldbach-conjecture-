@@ -3,26 +3,12 @@
 #include <string>
 using namespace std;
 
-/*
-Goldbach's conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states that every even natural number greater than 2 is the sum of two prime numbers.
-Here is the wikipedia link for more information: https://en.wikipedia.org/wiki/Goldbach%27s_conjecture.
-
-Before you start the lab, please:
-    1. Read the self-study topic File I/O [https://course.cse.ust.hk/comp2011/notes/h.fileio.pdf].
-    2. Read the self-study topic C++ String Class [https://course.cse.ust.hk/comp2011/notes/h.stlstr.pdf].
-*/
 
 bool isPrime(int n)
 {
-    // -------------------------------------------------------
-    // This function checks if a number is prime or not
-    // Input: n, an integer
-    // Output: true if n is prime, false otherwise
-    // For example, isPrime(5) returns true
-    // NOTE: 1 is not a prime number
-    // ** Your TODO: Implement this function **
+  
     if (n <= 1)return false; 
-    for (int i=2;i * i<=n;i++){ // int i = 2 while(i * i <=n) i + 1
+    for (int i=2;i * i<=n;i++){ 
         if(n % i==0)return false; 
     }
     return true; 
@@ -30,15 +16,7 @@ bool isPrime(int n)
 
 void findPrimePair(int n)
 {
-    // -------------------------------------------------------
-    // This function finds all pairs of prime numbers that sum up to n
-    // Input: n, an integer
-    // Output: the pairs of prime numbers (p, q) such that n = p + q
-    // For example, findPrimePair(10), outputs: "10=3+7=5+5"
-    // NOTE: you should output all pairs of prime numbers that sum up to n, and then print them in ascending order of p
-    // NOTE: please DO NOT print the same pair twice, e.g., 3+7 and 7+3 are the same pair, only print the first one
-    // NOTE: if n is not an even number, print "n is not an even number" and return
-    // ** Your TODO: Implement this function **
+
     if (n<= 2||n%2!=0) {
         cout<<n<<"is not an even number."<< endl;
         return;
@@ -58,22 +36,13 @@ void findPrimePair(int n)
     if (!Pairfound){
         result+="No prime pairs found."; 
     }
-    // -------------------------------------------------------
+    
     cout<<result<<endl;
 }
 
 void findPrimePairInRange(int lower,int upper)
 {
-    // -------------------------------------------------------
-    // This function finds all even numbers in the range [lower, upper] that can be expressed as the sum of two prime numbers in at least two different ways
-    // Input: lower bound, an integer (include this number)
-    // Input: upper bound, an integer (include this number)
-    // Output: a list of even numbers in the range [lower, upper] that can be expressed as the sum of two prime numbers in at least two different ways
-    // For example, findPrimePairInRange(1, 20), outputs: "10 14 16 18 20"
-    // NOTE: 8=3+5 and 8=5+3 are considered as one way, not two ways. 10=3+7 and 10=5+5 are considered as two ways.
-    // ** Your TODO: Implement this function **
-
-    // -------------------------------------------------------
+    
     bool evennumbersfound=false;
     for (int n=lower;n<=upper;n++){
         if(n%2==0&&n>2){ 
@@ -95,14 +64,12 @@ void findPrimePairInRange(int lower,int upper)
 
 void findEvenNumbers(string path)
 {
-    // -------------------------------------------------------
-    // This function finds all even numbers in the range [1, 100] that can be expressed as the sum of the given prime number and another prime number
+    
     cout << "Reading prime number from " << path << endl;
-    ifstream fin(path); // read prime number from this file
+    ifstream fin(path); 
     int prime;
     fin >> prime;
     cout << "Prime number: " << prime << endl;
-    // ** Your TODO: Implement this function **
     for (int n = prime+1; n <= 100; n+=2){
         int anothernumber = n - prime;
         if (anothernumber <= 2) continue;
@@ -110,7 +77,7 @@ void findEvenNumbers(string path)
             cout<<n<< " ";
         }
     }
-    // -------------------------------------------------------
+    
     cout << endl;
     fin.close();
 }
